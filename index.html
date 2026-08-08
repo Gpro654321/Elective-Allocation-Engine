@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <title>Electives Form Creator</title>
+  <style>
+      body {
+          font-family: sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          margin: 0;
+          background-color: #f0f0f0;
+      }
+      #container {
+          background-color: white;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+      button {
+          padding: 10px 20px;
+          background-color: #4CAF50;
+          border: none;
+          color: white;
+          text-align: center;
+          text-decoration: none;
+          display: block;
+          font-size: 16px;
+          margin-top: 10px;
+          border-radius: 5px;
+          cursor: pointer;
+          width: fit-content;
+          transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      }
+      button:hover {
+          background-color: #3e8e41;
+      }
+      button:active {
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      }
+       /* Style for the blue button */
+      #populateDummyDataButton {
+        background-color: #007bff; /* Blue background */
+      }
+
+      #populateDummyDataButton:hover {
+          background-color: #0056b3; /* Darker blue on hover */
+      }
+
+      #populateDummyDataButton:active {
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      }
+      #statusMessage {
+          margin-top: 10px;
+          font-weight: bold;
+          display: none;
+      }
+      .separator {
+        border-bottom: 1px solid #ddd;
+        width: 100%;
+        margin: 20px 0;
+      }
+  </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Electives Form Creator</h1>
+        <button id="createFormButton">Create Electives Form</button>
+        <button id="processResponseSheetButton">Process Response Sheet</button>
+        <button id="allotForAllStudentsButton">Allot for All Students</button>
+        <hr class="separator">
+        <h2>Self Check Tools</h2>
+        <button id="populateDummyDataButton">Populate Dummy Data</button>
+        <div id="statusMessage"></div>
+    </div>
+
+  <script>
+    document.getElementById('createFormButton').addEventListener('click', function() {
+      google.script.run
+        .withSuccessHandler(function(message) {
+          alert(message);
+        })
+        .withFailureHandler(onFailure)
+        .test_addQuestionToForm();
+    });
+
+    document.getElementById('processResponseSheetButton').addEventListener('click', function() {
+      google.script.run
+        .withSuccessHandler(function(message) {
+          alert(message);
+        })
+        .withFailureHandler(onFailure)
+        .test_responseSheetPreprocess();
+    });
+
+    document.getElementById('allotForAllStudentsButton').addEventListener('click', function() {
+      google.script.run
+        .withSuccessHandler(function(message) {
+          alert(message);
+        })
+        .withFailureHandler(onFailure)
+        .test_createAllotmentMatrixAndGenerateDeptWiseMatrix();
+    });
+
+    document.getElementById('populateDummyDataButton').addEventListener('click', function() {
+      google.script.run
+        .withSuccessHandler(function(message) {
+          alert(message);
+        })
+        .withFailureHandler(onFailure)
+        .test_populateDummyDataToSpreadsheet();
+    });
+
+    function onFailure(error) {
+        console.error("Error calling server-side function:", error);
+        document.getElementById('statusMessage').textContent = "An error occurred. Please check the console.";
+    }
+  </script>
+</body>
+</html>
