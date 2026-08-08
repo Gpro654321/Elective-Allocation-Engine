@@ -1,4 +1,4 @@
-Head over to this  link. (THIS WILL ONLY WORK IF THE LINK IS CALLED AS A kapvmeu user)
+Head over to this  link (https://script.google.com/macros/s/AKfycby4xrQIGiXtUmCzJIZLmP3f2QCqlpcrMLLjbMo3kuDV/dev). (THIS WILL ONLY WORK IF THE LINK IS CALLED AS A kapvmeu user)
 
 Click the “Create Electives Form” Button to create a new electives form. The data for this form would be taken from this sheet “ElectivesList”. (Also note that any change in this sheet would immediately trigger a function to update the script Properties). This function also creates the spreadsheet which collects the data for the form. The id of this spreadsheet will be stored in the script Property “dummySheetId”
 
